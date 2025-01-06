@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8te5n3cxt5fc"]
+
+[ext_resource type="Script" path="res://Scripts/Spells/spell_fire.gd" id="1_eenvc"]
+[ext_resource type="Texture2D" uid="uid://cqv3y6wskxkhk" path="res://Assets/Spells/Flame_Explosion.png" id="2_ir8l4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_176mc"]
+size = Vector2(20, 42)
+
+[sub_resource type="Animation" id="Animation_gyyvd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_pl1ya"]
+resource_name = "fire_spell"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jtdh0"]
+_data = {
+"RESET": SubResource("Animation_gyyvd"),
+"fire_spell": SubResource("Animation_pl1ya")
+}
+
+[node name="SpellFire" type="Node2D"]
+script = ExtResource("1_eenvc")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_176mc")
+debug_color = Color(2.96004e-06, 0.647767, 0.201648, 0.42)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ir8l4")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_jtdh0")
+}
+autoplay = "fire_spell"
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

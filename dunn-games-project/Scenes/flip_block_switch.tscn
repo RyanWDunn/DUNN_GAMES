@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://tg6nk1a7pnj4"]
+
+[ext_resource type="Script" path="res://Scripts/flip_block_switch.gd" id="1_38api"]
+[ext_resource type="Texture2D" uid="uid://bchk8nld78mo" path="res://Assets/LevelPrototypeTiles.png" id="1_t6f1o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu7vp"]
+atlas = ExtResource("1_t6f1o")
+region = Rect2(34.0965, 273.899, 12.139, 12.7642)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0fpl"]
+size = Vector2(12, 12)
+
+[node name="FlipBlockSwitch" type="Node2D"]
+script = ExtResource("1_38api")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_fu7vp")
+
+[node name="HitBox" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_f0fpl")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpgplpsoeq2in"]
+
+[ext_resource type="Texture2D" uid="uid://bchk8nld78mo" path="res://Assets/LevelPrototypeTiles.png" id="1_8a07r"]
+[ext_resource type="Script" path="res://Scripts/locked_door.gd" id="1_ha0m2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kq7j"]
+atlas = ExtResource("1_8a07r")
+region = Rect2(256.077, -0.384682, 32.0475, 24.0357)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s57j2"]
+size = Vector2(16, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqy7w"]
+size = Vector2(18, 14)
+
+[node name="LockedDoor" type="Node2D"]
+script = ExtResource("1_ha0m2")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_6kq7j")
+offset = Vector2(0, -12)
+
+[node name="Hitbox" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_s57j2")
+
+[node name="Collisionbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisionbox"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_eqy7w")
+
+[connection signal="body_entered" from="Collisionbox" to="." method="_on_collisionbox_body_entered"]

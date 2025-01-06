@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj7kgm3o0t1tq"]
+
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="1_hvak5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6l5gt"]
+
+[node name="MainCamera" type="Camera2D"]
+zoom = Vector2(4.5, 4.5)
+script = ExtResource("1_hvak5")
+
+[node name="TopLeftBoundary" type="Marker2D" parent="."]
+position = Vector2(-144, -144)
+
+[node name="Area2D" type="Area2D" parent="TopLeftBoundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopLeftBoundary/Area2D"]
+position = Vector2(145, 145)
+shape = SubResource("CircleShape2D_6l5gt")
+debug_color = Color(1, 0.632402, 0.370031, 0.42)
+
+[node name="BottomRightBoundary" type="Marker2D" parent="."]
+position = Vector2(144, 144)
+
+[node name="Area2D" type="Area2D" parent="BottomRightBoundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomRightBoundary/Area2D"]
+position = Vector2(145, 145)
+shape = SubResource("CircleShape2D_6l5gt")
+debug_color = Color(1, 0.632402, 0.370031, 0.42)

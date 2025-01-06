@@ -1,0 +1,185 @@
+[gd_scene load_steps=8 format=4 uid="uid://0y0ccno3cytn"]
+
+[ext_resource type="PackedScene" uid="uid://defsnniut2dlh" path="res://Scenes/ui.tscn" id="1_6ih8v"]
+[ext_resource type="PackedScene" uid="uid://dj7kgm3o0t1tq" path="res://Scenes/main_camera.tscn" id="2_f5g6c"]
+[ext_resource type="TileSet" uid="uid://dankdnxfsx66e" path="res://Resources/PrototypeTiles.tres" id="3_kx04l"]
+[ext_resource type="PackedScene" uid="uid://uuqa6etphhnu" path="res://Scenes/player.tscn" id="3_xk1mh"]
+[ext_resource type="PackedScene" uid="uid://d4kesaillqfs4" path="res://Scenes/Monsters/green_slime.tscn" id="4_o55m0"]
+[ext_resource type="PackedScene" uid="uid://7t7jfvndjwee" path="res://Scenes/Monsters/skeleton.tscn" id="5_qdlfr"]
+[ext_resource type="PackedScene" uid="uid://bheyohfdyyexc" path="res://Scenes/spike_trap.tscn" id="6_2fli5"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("1_6ih8v")]
+visible = false
+
+[node name="MainCamera" parent="." instance=ExtResource("2_f5g6c")]
+position = Vector2(64, -46)
+zoom = Vector2(3.5, 3.5)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD9//7/AAAJAAEAAAD+//7/AAAKAAEAAAD///7/AAALAAEAAAAAAP7/AAAIAAEAAAABAP7/AAAJAAEAAAACAP7/AAAKAAEAAAACAP3/AAAKAAAAAAADAP3/AAALAAAAAAAEAP3/AAAIAAAAAAAEAP7/AAAIAAEAAAAEAP//AAAIAAIAAAAEAAAAAAAIAAMAAAAHAP3/AAALAAAAAAAHAP7/AAALAAEAAAAHAP//AAALAAIAAAAHAAAAAAALAAMAAAAIAP3/AAAIAAAAAAAIAP7/AAAIAAEAAAAIAP//AAAIAAIAAAAIAAAAAAAIAAMAAAAJAP3/AAAEAAIAAAAJAP7/AAAJAAEAAAAJAP//AAAJAAIAAAAJAAAAAAAJAAMAAAAKAP3/AAAKAAAAAAAKAP7/AAAKAAEAAAAKAP//AAAEAAIAAAAKAAAAAAAKAAMAAAD9////AAAJAAIAAAD9/wAAAAAJAAMAAAD9/wEAAAAJAAAAAAD9/wIAAAAJAAEAAAD+////AAAKAAIAAAD+/wAAAAAKAAMAAAD+/wEAAAAKAAAAAAD+/wIAAAAKAAEAAAD/////AAALAAIAAAD//wAAAAALAAMAAAD//wEAAAALAAAAAAD//wIAAAALAAEAAAAAAP//AAAIAAIAAAAAAAAAAAAIAAMAAAAAAAEAAAAIAAAAAAAAAAIAAAAIAAEAAAABAP//AAAJAAIAAAABAAAAAAAJAAMAAAABAAEAAAAJAAAAAAABAAIAAAAJAAEAAAACAP//AAAKAAIAAAACAAAAAAAKAAMAAAACAAEAAAAKAAAAAAACAAIAAAAKAAEAAAADAP//AAALAAIAAAADAAAAAAALAAMAAAADAAEAAAALAAAAAAADAAIAAAALAAEAAAAEAAEAAAAIAAAAAAAEAAIAAAAIAAEAAAAFAP//AAAJAAIAAAAFAAAAAAAJAAMAAAAFAAEAAAAJAAAAAAAFAAIAAAAJAAEAAAAGAP//AAAKAAIAAAAGAAAAAAAKAAMAAAAGAAEAAAAKAAAAAAAGAAIAAAAKAAEAAAAHAAEAAAALAAAAAAAHAAIAAAALAAEAAAAIAAEAAAAIAAAAAAAIAAIAAAAIAAEAAAD9//r/AAAJAAEAAAD9//v/AAAJAAIAAAD9//z/AAAJAAMAAAD9//3/AAAJAAAAAAD+//r/AAAKAAEAAAD+//v/AAAKAAIAAAD+//z/AAAKAAMAAAD+//3/AAAKAAAAAAD///r/AAALAAEAAAD///v/AAALAAIAAAD///z/AAALAAMAAAD///3/AAALAAAAAAAAAPr/AAAIAAEAAAAAAPv/AAAIAAIAAAAAAPz/AAAIAAMAAAAAAP3/AAAIAAAAAAADAP7/AAALAAEAAAABAPr/AAAJAAEAAAABAPv/AAAJAAIAAAABAPz/AAAJAAMAAAABAP3/AAAJAAAAAAACAPr/AAAKAAEAAAACAPv/AAAKAAIAAAACAPz/AAAKAAMAAAADAPr/AAALAAEAAAADAPv/AAALAAIAAAADAPz/AAALAAMAAAAEAPr/AAAIAAEAAAAEAPv/AAAIAAIAAAAEAPz/AAAIAAMAAAAFAPr/AAAJAAEAAAAFAPv/AAAJAAIAAAAFAPz/AAAJAAMAAAAFAP3/AAAJAAAAAAAGAPr/AAAKAAEAAAAGAPv/AAAKAAIAAAAGAPz/AAAKAAMAAAAGAP3/AAAKAAAAAAAHAPr/AAALAAEAAAAHAPv/AAALAAIAAAAHAPz/AAALAAMAAAAIAPr/AAAIAAEAAAAIAPv/AAAEAAIAAAAIAPz/AAAIAAMAAAAFAP7/AAAJAAEAAAAGAP7/AAAKAAEAAAAJAAIAAAAJAAEAAAAJAAMAAAAJAAIAAAAJAAQAAAAJAAMAAAAJAAUAAAAEAAIAAAAKAAIAAAAKAAEAAAAKAAMAAAAKAAIAAAAKAAQAAAAKAAMAAAAKAAUAAAAEAAIAAAALAAIAAAALAAEAAAALAAMAAAALAAIAAAALAAQAAAALAAMAAAALAAUAAAAEAAIAAAAMAAIAAAAEAAIAAAAMAAMAAAAEAAIAAAAMAAQAAAAEAAIAAAAMAAUAAAAEAAIAAAAFAAMAAAAJAAIAAAAFAAQAAAAJAAMAAAAFAAUAAAAEAAIAAAAGAAMAAAAKAAIAAAAGAAQAAAAKAAMAAAAGAAUAAAAEAAIAAAAHAAMAAAALAAIAAAAHAAQAAAALAAMAAAAHAAUAAAAEAAIAAAAIAAMAAAAIAAIAAAAIAAQAAAAIAAMAAAAIAAUAAAAEAAIAAAABAAMAAAAJAAIAAAABAAQAAAAJAAMAAAABAAUAAAAEAAIAAAACAAMAAAAKAAIAAAACAAQAAAAKAAMAAAACAAUAAAAEAAIAAAADAAMAAAALAAIAAAADAAQAAAALAAMAAAADAAUAAAAEAAIAAAAEAAMAAAAIAAIAAAAEAAQAAAAIAAMAAAAEAAUAAAAEAAIAAAD9/wMAAAAJAAIAAAD9/wQAAAAJAAMAAAD9/wUAAAAEAAIAAAD+/wMAAAAKAAIAAAD+/wQAAAAKAAMAAAD+/wUAAAAEAAIAAAD//wMAAAALAAIAAAD//wQAAAALAAMAAAD//wUAAAAEAAIAAAAAAAMAAAAIAAIAAAAAAAQAAAAIAAMAAAAAAAUAAAAEAAIAAAAJAAEAAAAJAAAAAAAKAAEAAAAKAAAAAAALAP7/AAALAAEAAAALAP//AAALAAIAAAALAAAAAAALAAMAAAALAAEAAAALAAAAAAAMAP7/AAAEAAIAAAAMAP//AAAEAAIAAAAMAAAAAAAEAAIAAAAMAAEAAAAEAAIAAAAJAPr/AAAJAAEAAAAJAPv/AAAJAAIAAAAJAPz/AAAJAAMAAAAKAPr/AAAKAAEAAAAKAPv/AAAKAAIAAAAKAPz/AAAKAAMAAAALAPr/AAALAAEAAAALAPv/AAALAAIAAAALAPz/AAALAAMAAAALAP3/AAALAAAAAAAMAPr/AAAEAAIAAAAMAPv/AAAEAAIAAAAMAPz/AAAEAAIAAAAMAP3/AAAEAAIAAAD7//T/AAAEAAIAAAD7//X/AAAEAAIAAAD7//b/AAAEAAIAAAD7//f/AAAEAAIAAAD8//T/AAAEAAIAAAD8//X/AAAIAAAAAAD8//b/AAAIAAEAAAD8//f/AAAIAAIAAAD9//T/AAAEAAIAAAD9//X/AAAJAAAAAAD9//b/AAAJAAEAAAD9//f/AAAJAAIAAAD+//T/AAAEAAIAAAD+//X/AAAKAAAAAAD+//b/AAAKAAEAAAD+//f/AAAKAAIAAAD7//j/AAAEAAIAAAD7//n/AAAEAAIAAAD7//r/AAAEAAIAAAD7//v/AAAEAAIAAAD8//j/AAAIAAMAAAD8//n/AAAIAAAAAAD8//r/AAAIAAEAAAD8//v/AAAIAAIAAAD9//j/AAAJAAMAAAD9//n/AAAJAAAAAAD+//j/AAAKAAMAAAD+//n/AAAKAAAAAAD7//z/AAAEAAIAAAD7//3/AAAEAAIAAAD7//7/AAAEAAIAAAD7////AAAEAAIAAAD8//z/AAAIAAMAAAD8//3/AAAIAAAAAAD8//7/AAAIAAEAAAD8////AAAIAAIAAAD7/wAAAAAEAAIAAAD7/wEAAAAEAAIAAAD7/wIAAAAEAAIAAAD7/wMAAAAEAAIAAAD8/wAAAAAIAAMAAAD8/wEAAAAIAAAAAAD8/wIAAAAIAAEAAAD8/wMAAAAIAAIAAAD///X/AAALAAAAAAD///b/AAALAAEAAAD///f/AAALAAIAAAD///j/AAALAAMAAAAAAPn/AAAIAAAAAAABAPn/AAAJAAAAAAACAPn/AAAKAAAAAAADAPn/AAALAAAAAAD8/wQAAAAIAAMAAAAEAPn/AAAIAAAAAAAFAPn/AAAJAAAAAAAGAPn/AAAKAAAAAAAHAPn/AAAEAAIAAAAIAPn/AAAIAAAAAAAJAPn/AAAJAAAAAAAKAPn/AAAKAAAAAAALAPn/AAALAAAAAAAEAPX/AAAIAAAAAAAEAPb/AAAIAAEAAAAEAPf/AAAIAAIAAAAEAPj/AAAIAAMAAAAFAPX/AAAJAAAAAAAFAPb/AAAJAAEAAAAFAPf/AAAJAAIAAAAFAPj/AAAJAAMAAAAGAPX/AAAKAAAAAAAGAPb/AAAKAAEAAAAGAPf/AAAEAAIAAAAGAPj/AAAKAAMAAAAHAPX/AAALAAAAAAAHAPb/AAALAAEAAAAHAPf/AAALAAIAAAAHAPj/AAALAAMAAAAIAPX/AAAIAAAAAAAIAPb/AAAIAAEAAAAIAPf/AAAIAAIAAAAIAPj/AAAIAAMAAAAJAPX/AAAJAAAAAAAJAPb/AAAJAAEAAAAJAPf/AAAJAAIAAAAJAPj/AAAJAAMAAAAKAPX/AAAKAAAAAAAKAPb/AAAKAAEAAAAKAPf/AAAKAAIAAAAKAPj/AAAKAAMAAAALAPX/AAALAAAAAAALAPb/AAALAAEAAAALAPf/AAALAAIAAAALAPj/AAALAAMAAAAAAPX/AAAIAAAAAAAAAPb/AAAIAAEAAAAAAPf/AAAIAAIAAAAAAPj/AAAIAAMAAAABAPX/AAAJAAAAAAABAPb/AAAJAAEAAAABAPf/AAAJAAIAAAABAPj/AAAJAAMAAAACAPX/AAAKAAAAAAACAPb/AAAKAAEAAAACAPf/AAAKAAIAAAACAPj/AAAKAAMAAAADAPX/AAALAAAAAAADAPb/AAALAAEAAAADAPf/AAALAAIAAAADAPj/AAALAAMAAAD8/wUAAAAEAAIAAAD7/wUAAAAEAAIAAAD7/wQAAAAEAAIAAAD///T/AAAEAAIAAAAAAPT/AAAEAAIAAAABAPT/AAAEAAIAAAACAPT/AAAEAAIAAAADAPT/AAAEAAIAAAAEAPT/AAAEAAIAAAAFAPT/AAAEAAIAAAAGAPT/AAAEAAIAAAAHAPT/AAAEAAIAAAAIAPT/AAAEAAIAAAAJAPT/AAAEAAIAAAAKAPT/AAAEAAIAAAALAPT/AAAEAAIAAAAMAPT/AAAEAAIAAAAMAPX/AAAEAAIAAAAMAPb/AAAEAAIAAAAMAPf/AAAEAAIAAAAMAPj/AAAEAAIAAAAMAPn/AAAEAAIAAAD///n/AAALAAAAAAA=")
+tile_set = ExtResource("3_kx04l")
+
+[node name="Player" parent="." instance=ExtResource("3_xk1mh")]
+position = Vector2(28, -48)
+
+[node name="Monsters" type="Node" parent="."]
+
+[node name="Skeleton" parent="Monsters" instance=ExtResource("5_qdlfr")]
+position = Vector2(91, -48)
+
+[node name="Skeleton2" parent="Monsters" instance=ExtResource("5_qdlfr")]
+position = Vector2(91, -16)
+
+[node name="Skeleton3" parent="Monsters" instance=ExtResource("5_qdlfr")]
+position = Vector2(91, -80)
+
+[node name="Skeleton5" parent="Monsters" instance=ExtResource("5_qdlfr")]
+position = Vector2(91, -112)
+
+[node name="Skeleton4" parent="Monsters" instance=ExtResource("5_qdlfr")]
+position = Vector2(91, 16)
+
+[node name="GreenSlime" parent="Monsters" instance=ExtResource("4_o55m0")]
+position = Vector2(-40, -128)
+
+[node name="GreenSlime2" parent="Monsters" instance=ExtResource("4_o55m0")]
+position = Vector2(24, 0)
+
+[node name="GreenSlime3" parent="Monsters" instance=ExtResource("4_o55m0")]
+position = Vector2(8, -32)
+
+[node name="GreenSlime4" parent="Monsters" instance=ExtResource("4_o55m0")]
+position = Vector2(-24, -96)
+
+[node name="GreenSlime5" parent="Monsters" instance=ExtResource("4_o55m0")]
+position = Vector2(-8, -64)
+
+[node name="Traps" type="Node" parent="."]
+
+[node name="SpikeTrap" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(-56, 80)
+
+[node name="SpikeTrap33" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(0, -128)
+
+[node name="SpikeTrap34" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(16, -96)
+
+[node name="SpikeTrap35" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(32, -64)
+
+[node name="SpikeTrap36" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(48, -32)
+
+[node name="SpikeTrap37" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(64, 0)
+
+[node name="SpikeTrap38" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(8, -128)
+
+[node name="SpikeTrap39" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(24, -96)
+
+[node name="SpikeTrap40" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(40, -64)
+
+[node name="SpikeTrap41" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(56, -32)
+
+[node name="SpikeTrap42" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(72, 0)
+
+[node name="SpikeTrap2" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(-40, 80)
+
+[node name="SpikeTrap3" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(-24, 80)
+
+[node name="SpikeTrap4" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(-8, 80)
+
+[node name="SpikeTrap5" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(8, 80)
+
+[node name="SpikeTrap6" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(24, 80)
+
+[node name="SpikeTrap7" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(40, 80)
+
+[node name="SpikeTrap8" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(56, 80)
+
+[node name="SpikeTrap9" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(72, 80)
+
+[node name="SpikeTrap10" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(88, 80)
+
+[node name="SpikeTrap11" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(104, 80)
+
+[node name="SpikeTrap12" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(120, 80)
+
+[node name="SpikeTrap13" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(136, 80)
+
+[node name="SpikeTrap14" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(152, 80)
+
+[node name="SpikeTrap15" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(168, 80)
+
+[node name="SpikeTrap16" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(184, 80)
+
+[node name="SpikeTrap17" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(-56, -160)
+
+[node name="SpikeTrap18" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(-40, -160)
+
+[node name="SpikeTrap19" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(-24, -160)
+
+[node name="SpikeTrap20" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(-8, -160)
+
+[node name="SpikeTrap21" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(8, -160)
+
+[node name="SpikeTrap22" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(24, -160)
+
+[node name="SpikeTrap23" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(40, -160)
+
+[node name="SpikeTrap24" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(56, -160)
+
+[node name="SpikeTrap25" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(72, -160)
+
+[node name="SpikeTrap26" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(88, -160)
+
+[node name="SpikeTrap27" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(104, -160)
+
+[node name="SpikeTrap28" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(120, -160)
+
+[node name="SpikeTrap29" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(136, -160)
+
+[node name="SpikeTrap30" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(152, -160)
+
+[node name="SpikeTrap31" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(168, -160)
+
+[node name="SpikeTrap32" parent="Traps" instance=ExtResource("6_2fli5")]
+position = Vector2(184, -160)

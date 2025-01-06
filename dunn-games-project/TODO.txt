@@ -1,0 +1,30 @@
+Implemented:
+	Water Tiles: Impassable
+	Wall Tiles: Impassable
+	Green Slime: (1 hp) Stationary Enemy
+	Red Slime: (3 hp) Stationary Enemy
+	Spike Trap: -1 hp When Walked Over
+	Shield Spell: Negates Next Damage
+	Fire Spell: Damages three tiles vertically next to player
+	Spider: (1 hp) Patrols between two points
+	Gold Spider: (1 hp) Patrols between two points faster
+	Enemy Trap: Place this and when enemy hits it they are trapped
+	Heal Spell: Restores 1 hp for 3 mana
+	Skeleton: (2 hp) mirrors your movement and attack, can hit enemies
+		and be trapped.  Can't hit with front attacks (swords clang off)
+		but can be killed with magic or spikes.
+	FlipBlock: A trap and a spell, a block that flips when a spell is used
+	Debug Camera: Toggle this option on and off for debug purposes
+	Locked Door and Key
+	
+To Implement:
+	Spell for crossing water
+	Different color keys / locks
+
+Known Bugs:
+	Debugger throws error in a godot cpp file when setting the velocity
+		vector to a value in player.gd.  After extensive testing I 
+		think this is a Godot Engine bug and will not affect gameplay
+		but keeping an eye on this.
+	On Save the output throws a bug about an out of bounds _p_frame.  I 
+		believe I've fixed this but the error persists.  Watching it.

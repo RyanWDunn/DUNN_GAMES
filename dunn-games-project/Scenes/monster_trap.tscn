@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cubsg3bjw3gy2"]
+
+[ext_resource type="Script" path="res://Scripts/monster_trap.gd" id="1_31v7q"]
+[ext_resource type="Texture2D" uid="uid://bchk8nld78mo" path="res://Assets/LevelPrototypeTiles.png" id="1_hgedi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ycvf"]
+size = Vector2(16, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujgp8"]
+atlas = ExtResource("1_hgedi")
+region = Rect2(99.2493, 254.955, 42.0593, 35.368)
+
+[node name="MonsterTrap" type="Node2D"]
+script = ExtResource("1_31v7q")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_1ycvf")
+debug_color = Color(0.913245, 0.292501, 0, 0.42)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_ujgp8")
+offset = Vector2(0, -16)
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

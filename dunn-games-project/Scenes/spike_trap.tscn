@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bheyohfdyyexc"]
+
+[ext_resource type="Script" path="res://Scripts/spike_trap.gd" id="1_b1f1i"]
+[ext_resource type="Texture2D" uid="uid://bchk8nld78mo" path="res://Assets/LevelPrototypeTiles.png" id="1_smhsf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4j4qw"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnqu7"]
+atlas = ExtResource("1_smhsf")
+region = Rect2(304.016, 136.077, 16.305, 8.26418)
+
+[sub_resource type="Gradient" id="Gradient_u4fgg"]
+colors = PackedColorArray(0, 0, 0, 0.235294, 0, 0, 0, 0.235294)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yh337"]
+gradient = SubResource("Gradient_u4fgg")
+width = 16
+height = 16
+
+[node name="SpikeTrap" type="Node2D"]
+script = ExtResource("1_b1f1i")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_4j4qw")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_bnqu7")
+offset = Vector2(0, -8)
+
+[node name="Background" type="Sprite2D" parent="Sprite"]
+texture = SubResource("GradientTexture2D_yh337")
+offset = Vector2(0, -8)
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

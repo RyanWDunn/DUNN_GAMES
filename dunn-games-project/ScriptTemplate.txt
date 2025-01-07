@@ -1,6 +1,7 @@
 extends NODE_TYPE
 class_name CLASS_NAME
 
+cc
 #region Export Variables
 #endregion
 

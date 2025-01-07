@@ -12,7 +12,7 @@
 [node name="UI" parent="." instance=ExtResource("1_lp5sl")]
 
 [node name="MainCamera" parent="." instance=ExtResource("2_bacuc")]
-position = Vector2(64, -46)
+position = Vector2(64, -48)
 zoom = Vector2(3.5, 3.5)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -87,3 +87,5 @@ position = Vector2(184, -32)
 position = Vector2(184, -16)
 
 [node name="Markers" type="Node" parent="."]
+
+[editable path="MainCamera"]

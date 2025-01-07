@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://drjoeyt7e6kwg"
-path="res://.godot/imported/diamond_shape_2d.svg-c7409b07122604b74671fded8f79cf9b.ctex"
+path="res://.godot/imported/diamond_shape_2d.svg-4e1bd45d9e3fbc1da7e9f77b50e2a2b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/sprite_painter/graphics/diamond_shape_2d.svg"
-dest_files=["res://.godot/imported/diamond_shape_2d.svg-c7409b07122604b74671fded8f79cf9b.ctex"]
+source_file="res://Addons/sprite_painter/graphics/diamond_shape_2d.svg"
+dest_files=["res://.godot/imported/diamond_shape_2d.svg-4e1bd45d9e3fbc1da7e9f77b50e2a2b5.ctex"]
 
 [params]
 

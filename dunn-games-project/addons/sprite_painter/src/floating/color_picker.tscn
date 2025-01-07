@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://be21fmb246ubn"]
 
-[ext_resource type="Script" path="res://addons/sprite_painter/src/floating/color_picker.gd" id="1_ae0lg"]
-[ext_resource type="Script" path="res://addons/sprite_painter/editor_icon_button.gd" id="1_srmpw"]
+[ext_resource type="Script" path="res://Addons/sprite_painter/src/floating/color_picker.gd" id="1_ae0lg"]
+[ext_resource type="Script" path="res://Addons/sprite_painter/editor_icon_button.gd" id="1_srmpw"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_l6hbd"]
 resource_name = "Alt"

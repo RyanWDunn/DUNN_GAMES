@@ -14,7 +14,10 @@ var _currentStamina : int
 var _maxStamina : int
 var _active_spell : Enums.Spell = Enums.Spell.Shield
 var _active_item : Enums.Item = Enums.Item.MonsterTrap
-var _has_key : bool = false
+var _has_red_key : bool = false
+var _has_blue_key : bool = false
+var _has_green_key : bool = false
+var _has_key : int = 0
 #endregion
 
 #region Signals
@@ -65,16 +68,39 @@ func get_active_item() -> Enums.Item:
 func flip_blocks() -> void:
 	flip_block_switch.emit()
 
-func pick_up_key() -> void:
-	_has_key = true
+func pick_up_key(key_type : Enums.Lock) -> void:
+	print (key_type)
+	if key_type == Enums.Lock.Red:
+		_has_red_key = true
+	elif key_type == Enums.Lock.Blue:
+		_has_blue_key = true
+	elif key_type == Enums.Lock.Green:
+		_has_green_key = true
+	_has_key += 1
+	key_changed.emit(_has_key, key_type)
+
+func use_key(key_type : Enums.Lock) -> void:
+	_has_key -= 1
+	if key_type == Enums.Lock.Red:
+		_has_red_key = false
+	if key_type == Enums.Lock.Green:
+		_has_green_key = false
+	if key_type == Enums.Lock.Blue:
+		_has_blue_key = false
 	key_changed.emit(_has_key)
 
-func use_key() -> void:
-	_has_key = false
-	key_changed.emit(_has_key)
-
-func check_for_key() -> bool:
-	return _has_key
+func check_for_key(door_type : Enums.Lock) -> bool:
+	if door_type == Enums.Lock.Red:
+		if _has_red_key == true: return true
+		else: return false
+	if door_type == Enums.Lock.Blue:
+		if _has_blue_key == true: return true
+		else: return false
+	if door_type == Enums.Lock.Green:
+		if _has_green_key == true: return true
+		else: return false
+	
+	return false
 #endregion
 
 #region Private Methods

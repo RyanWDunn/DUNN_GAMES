@@ -12,3 +12,10 @@ enum Item
 {
 	MonsterTrap
 }
+
+enum Lock
+{
+	Red,
+	Green,
+	Blue
+}
